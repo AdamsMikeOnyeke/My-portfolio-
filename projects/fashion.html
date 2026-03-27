@@ -1,0 +1,2117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bella Vogue — Elegance in Every Thread</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Mulish:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ════════════════════════════════
+   CSS VARIABLES
+════════════════════════════════ */
+      :root {
+        --cream: #f8f3ec;
+        --cream-dark: #efe6d8;
+        --cream-deep: #e8dace;
+        --black: #0d0d0d;
+        --black-soft: #1a1a1a;
+        --charcoal: #2c2c2c;
+        --grey: #6b6b6b;
+        --grey-light: #a8a8a8;
+        --gold: #b8943f;
+        --gold-light: #d4b06a;
+        --gold-pale: #f0dfb0;
+        --white: #ffffff;
+        --border: rgba(13, 13, 13, 0.1);
+        --border-gold: rgba(184, 148, 63, 0.3);
+        --r: 3px;
+        --r-lg: 6px;
+      }
+
+      /* ════════════════════════════════
+   RESET & BASE
+════════════════════════════════ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+      body {
+        background: var(--cream);
+        color: var(--black);
+        font-family: "Mulish", sans-serif;
+        font-weight: 400;
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        display: block;
+        width: 100%;
+      }
+      button {
+        font-family: "Mulish", sans-serif;
+        cursor: pointer;
+      }
+
+      /* ════════════════════════════════
+   UTILITIES
+════════════════════════════════ */
+      .container {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+      .container-sm {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+      .section {
+        padding: 120px 0;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 10px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+      .section-title {
+        font-family: "Bodoni Moda", serif;
+        font-size: clamp(34px, 4.5vw, 58px);
+        font-weight: 500;
+        line-height: 1.08;
+        color: var(--black);
+      }
+      .section-title em {
+        font-style: italic;
+        color: var(--gold);
+      }
+
+      .gold-line {
+        width: 48px;
+        height: 1px;
+        background: var(--gold);
+        margin: 24px 0;
+      }
+      .gold-line.center {
+        margin: 24px auto;
+      }
+
+      /* ════════════════════════════════
+   REVEAL ANIMATIONS
+════════════════════════════════ */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.85s cubic-bezier(0.25, 0.8, 0.25, 1),
+          transform 0.85s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .reveal-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition:
+          opacity 0.85s cubic-bezier(0.25, 0.8, 0.25, 1),
+          transform 0.85s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .reveal-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition:
+          opacity 0.85s cubic-bezier(0.25, 0.8, 0.25, 1),
+          transform 0.85s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .reveal.visible,
+      .reveal-left.visible,
+      .reveal-right.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .delay-1 {
+        transition-delay: 0.1s !important;
+      }
+      .delay-2 {
+        transition-delay: 0.2s !important;
+      }
+      .delay-3 {
+        transition-delay: 0.3s !important;
+      }
+      .delay-4 {
+        transition-delay: 0.4s !important;
+      }
+
+      /* ════════════════════════════════
+   CURSOR DOT (luxury touch)
+════════════════════════════════ */
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--gold);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s;
+      }
+      .cursor-ring {
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--gold);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition: all 0.18s ease;
+        opacity: 0.6;
+      }
+
+      /* ════════════════════════════════
+   NAVIGATION
+════════════════════════════════ */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 500;
+        padding: 24px 0;
+        transition:
+          padding 0.4s,
+          background 0.4s,
+          box-shadow 0.4s;
+      }
+      nav.scrolled {
+        background: rgba(248, 243, 236, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 16px 0;
+        box-shadow: 0 1px 0 var(--border);
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-logo {
+        font-family: "Bodoni Moda", serif;
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--black);
+        flex-shrink: 0;
+      }
+      .nav-logo span {
+        color: var(--gold);
+      }
+      .nav-links {
+        display: flex;
+        gap: 36px;
+        align-items: center;
+      }
+      .nav-links a {
+        font-size: 11px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--charcoal);
+        position: relative;
+        transition: color 0.25s;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 0;
+        height: 1px;
+        background: var(--gold);
+        transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+      .nav-icon {
+        background: none;
+        border: none;
+        font-size: 18px;
+        color: var(--charcoal);
+        cursor: pointer;
+        transition: color 0.25s;
+        position: relative;
+      }
+      .nav-icon:hover {
+        color: var(--gold);
+      }
+      .cart-count {
+        position: absolute;
+        top: -6px;
+        right: -8px;
+        width: 17px;
+        height: 17px;
+        background: var(--gold);
+        color: var(--white);
+        border-radius: 50%;
+        font-size: 9px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Mulish", sans-serif;
+      }
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 1px;
+        background: var(--black);
+        transition: all 0.3s;
+      }
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: var(--cream);
+        z-index: 600;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 36px;
+      }
+      .mobile-menu.open {
+        display: flex;
+      }
+      .mobile-menu a {
+        font-family: "Bodoni Moda", serif;
+        font-size: 36px;
+        font-weight: 500;
+        color: var(--black);
+        transition: color 0.25s;
+      }
+      .mobile-menu a:hover {
+        color: var(--gold);
+      }
+      .mob-close {
+        position: absolute;
+        top: 28px;
+        right: 36px;
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: var(--black);
+      }
+
+      /* ════════════════════════════════
+   ANNOUNCEMENT BAR
+════════════════════════════════ */
+      .announcement {
+        background: var(--black);
+        color: var(--gold-pale);
+        text-align: center;
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        padding: 10px;
+        font-weight: 500;
+        margin-top: 0;
+      }
+
+      /* ════════════════════════════════
+   HERO
+════════════════════════════════ */
+      #hero {
+        min-height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            105deg,
+            rgba(248, 243, 236, 0.96) 0%,
+            rgba(248, 243, 236, 0.82) 42%,
+            rgba(248, 243, 236, 0.2) 100%
+          ),
+          url("https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=85")
+            right center / cover no-repeat;
+        transform: scale(1.04);
+        transition: transform 8s ease;
+      }
+      #hero.loaded .hero-bg {
+        transform: scale(1);
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        padding: 160px 0 100px;
+        max-width: 620px;
+      }
+      .hero-eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 10px;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 600;
+        margin-bottom: 28px;
+        opacity: 0;
+        animation: heroFade 1s 0.3s ease forwards;
+      }
+      .hero-eyebrow::before {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 1px;
+        background: var(--gold);
+      }
+      .hero-title {
+        font-family: "Bodoni Moda", serif;
+        font-size: clamp(52px, 7.5vw, 100px);
+        font-weight: 500;
+        line-height: 1;
+        color: var(--black);
+        margin-bottom: 24px;
+        opacity: 0;
+        animation: heroFade 1s 0.5s ease forwards;
+      }
+      .hero-title em {
+        font-style: italic;
+        color: var(--gold);
+        display: block;
+      }
+      .hero-sub {
+        font-size: 15px;
+        color: var(--grey);
+        font-weight: 300;
+        max-width: 400px;
+        line-height: 1.85;
+        margin-bottom: 48px;
+        opacity: 0;
+        animation: heroFade 1s 0.7s ease forwards;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        opacity: 0;
+        animation: heroFade 1s 0.9s ease forwards;
+      }
+      .btn-black {
+        background: var(--black);
+        color: var(--white);
+        border: 1.5px solid var(--black);
+        padding: 16px 44px;
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-weight: 700;
+        transition:
+          background 0.35s,
+          color 0.35s,
+          transform 0.3s,
+          box-shadow 0.3s;
+        display: inline-block;
+      }
+      .btn-black:hover {
+        background: var(--gold);
+        border-color: var(--gold);
+        transform: translateY(-3px);
+        box-shadow: 0 16px 32px rgba(184, 148, 63, 0.25);
+      }
+      .btn-outline-black {
+        background: transparent;
+        color: var(--black);
+        border: 1.5px solid var(--black);
+        padding: 16px 44px;
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-weight: 700;
+        transition:
+          background 0.35s,
+          color 0.35s,
+          transform 0.3s;
+        display: inline-block;
+      }
+      .btn-outline-black:hover {
+        background: var(--black);
+        color: var(--white);
+        transform: translateY(-3px);
+      }
+      .hero-scroll-hint {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        font-size: 9px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--grey-light);
+        opacity: 0;
+        animation: heroFade 1s 1.2s ease forwards;
+      }
+      .scroll-mouse {
+        width: 22px;
+        height: 34px;
+        border: 1.5px solid var(--grey-light);
+        border-radius: 11px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 6px;
+      }
+      .scroll-mouse::after {
+        content: "";
+        display: block;
+        width: 3px;
+        height: 7px;
+        background: var(--gold);
+        border-radius: 2px;
+        animation: mouseScroll 1.8s ease-in-out infinite;
+      }
+      @keyframes mouseScroll {
+        0% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+      }
+      @keyframes heroFade {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* ════════════════════════════════
+   MARQUEE STRIP
+════════════════════════════════ */
+      .marquee-strip {
+        background: var(--black);
+        padding: 16px 0;
+        overflow: hidden;
+        display: flex;
+      }
+      .marquee-track {
+        display: flex;
+        gap: 0;
+        animation: marquee 22s linear infinite;
+        white-space: nowrap;
+      }
+      .marquee-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold-pale);
+        font-weight: 600;
+        padding: 0 30px;
+      }
+      .marquee-dot {
+        color: var(--gold);
+        font-size: 14px;
+      }
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ════════════════════════════════
+   FEATURED COLLECTION
+════════════════════════════════ */
+      #collection {
+        background: var(--cream);
+      }
+      .collection-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 60px;
+      }
+      .view-all {
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--gold);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: gap 0.3s;
+      }
+      .view-all:hover {
+        gap: 16px;
+      }
+      .view-all::after {
+        content: "→";
+      }
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 28px;
+      }
+      .product-card {
+        cursor: pointer;
+      }
+      .product-img-wrap {
+        position: relative;
+        overflow: hidden;
+        background: var(--cream-dark);
+        aspect-ratio: 3/4;
+        margin-bottom: 18px;
+      }
+      .product-img {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center top;
+        transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .product-card:hover .product-img {
+        transform: scale(1.07);
+      }
+      .product-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(13, 13, 13, 0.42);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .product-card:hover .product-overlay {
+        opacity: 1;
+      }
+      .btn-view {
+        background: var(--white);
+        color: var(--black);
+        border: none;
+        padding: 13px 30px;
+        font-size: 9px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-weight: 700;
+        cursor: pointer;
+        transform: translateY(12px);
+        transition:
+          transform 0.35s,
+          background 0.25s,
+          color 0.25s;
+      }
+      .product-card:hover .btn-view {
+        transform: translateY(0);
+      }
+      .btn-view:hover {
+        background: var(--gold);
+        color: var(--white);
+      }
+      .prod-badge {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        background: var(--black);
+        color: var(--white);
+        font-size: 8px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 5px 12px;
+      }
+      .prod-badge.gold {
+        background: var(--gold);
+      }
+      .product-name {
+        font-family: "Bodoni Moda", serif;
+        font-size: 17px;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+      .product-category {
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--grey-light);
+        margin-bottom: 8px;
+      }
+      .product-price {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--black);
+      }
+      .product-price .old {
+        text-decoration: line-through;
+        color: var(--grey-light);
+        font-weight: 400;
+        margin-right: 8px;
+      }
+      .product-price .new {
+        color: var(--gold);
+      }
+
+      /* ════════════════════════════════
+   NEW ARRIVALS
+════════════════════════════════ */
+      #arrivals {
+        background: var(--cream-dark);
+        padding: 120px 0;
+      }
+      .arrivals-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .arrivals-images {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .arrival-img {
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .arrival-img:first-child {
+        grid-column: span 2;
+      }
+      .arrival-img-inner {
+        aspect-ratio: 4/3;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .arrival-img:first-child .arrival-img-inner {
+        aspect-ratio: 16/9;
+      }
+      .arrival-img:hover .arrival-img-inner {
+        transform: scale(1.06);
+      }
+      .arrivals-text .eyebrow {
+        display: block;
+      }
+      .arrivals-text p {
+        font-size: 15px;
+        color: var(--grey);
+        font-weight: 300;
+        line-height: 1.9;
+        margin-bottom: 32px;
+      }
+      .arrivals-features {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 40px;
+      }
+      .arr-feat {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-size: 13px;
+        color: var(--charcoal);
+        font-weight: 400;
+      }
+      .arr-feat-icon {
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--border-gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        flex-shrink: 0;
+        background: var(--cream);
+      }
+      .new-item-row {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .new-item-row:first-of-type {
+        border-top: 1px solid var(--border);
+      }
+      .new-item-img {
+        width: 64px;
+        height: 80px;
+        background-size: cover;
+        background-position: center top;
+        flex-shrink: 0;
+      }
+      .new-item-info {
+        flex: 1;
+      }
+      .new-item-name {
+        font-family: "Bodoni Moda", serif;
+        font-size: 15px;
+        font-weight: 500;
+        margin-bottom: 3px;
+      }
+      .new-item-price {
+        font-size: 13px;
+        color: var(--gold);
+        font-weight: 600;
+      }
+      .btn-cart {
+        background: none;
+        border: 1px solid var(--border);
+        padding: 8px 16px;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 700;
+        cursor: pointer;
+        color: var(--black);
+        transition: all 0.25s;
+        white-space: nowrap;
+      }
+      .btn-cart:hover {
+        background: var(--black);
+        color: var(--white);
+        border-color: var(--black);
+      }
+
+      /* ════════════════════════════════
+   BRAND STORY
+════════════════════════════════ */
+      #story {
+        background: var(--cream);
+        overflow: hidden;
+      }
+      .story-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        min-height: 600px;
+      }
+      .story-image {
+        position: relative;
+        overflow: hidden;
+      }
+      .story-img-inner {
+        position: absolute;
+        inset: -20px;
+        background: url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=80")
+          center / cover;
+        transition: transform 0.1s linear;
+      }
+      .story-content {
+        padding: 80px 72px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: var(--cream-deep);
+      }
+      .story-content .section-title {
+        margin-bottom: 0;
+      }
+      .story-content p {
+        font-size: 15px;
+        color: var(--grey);
+        font-weight: 300;
+        line-height: 1.9;
+        margin-bottom: 20px;
+      }
+      .story-stats {
+        display: flex;
+        gap: 40px;
+        margin: 36px 0;
+      }
+      .story-stat .num {
+        font-family: "Bodoni Moda", serif;
+        font-size: 40px;
+        font-weight: 500;
+        color: var(--black);
+        line-height: 1;
+      }
+      .story-stat .lbl {
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--grey-light);
+        margin-top: 5px;
+      }
+      .story-sig {
+        font-family: "Bodoni Moda", serif;
+        font-size: 26px;
+        font-style: italic;
+        color: var(--gold);
+        margin-top: 8px;
+      }
+
+      /* ════════════════════════════════
+   GALLERY
+════════════════════════════════ */
+      #gallery {
+        background: var(--cream-dark);
+      }
+      .gallery-header {
+        text-align: center;
+        margin-bottom: 54px;
+      }
+      .gallery-masonry {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        gap: 14px;
+      }
+      .gallery-item {
+        overflow: hidden;
+        cursor: pointer;
+        position: relative;
+      }
+      .gallery-item:nth-child(1) {
+        grid-row: span 2;
+      }
+      .gallery-item:nth-child(5) {
+        grid-column: span 2;
+      }
+      .gallery-img-inner {
+        width: 100%;
+        height: 100%;
+        min-height: 240px;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .gallery-item:nth-child(1) .gallery-img-inner {
+        min-height: 500px;
+      }
+      .gallery-item:nth-child(5) .gallery-img-inner {
+        min-height: 280px;
+      }
+      .gallery-item:hover .gallery-img-inner {
+        transform: scale(1.06);
+      }
+      .gallery-hover {
+        position: absolute;
+        inset: 0;
+        background: rgba(248, 243, 236, 0);
+        display: flex;
+        align-items: flex-end;
+        padding: 20px;
+        opacity: 0;
+        transition:
+          opacity 0.4s,
+          background 0.4s;
+      }
+      .gallery-item:hover .gallery-hover {
+        opacity: 1;
+        background: rgba(13, 13, 13, 0.35);
+      }
+      .gallery-tag {
+        background: var(--cream);
+        color: var(--black);
+        font-size: 9px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 6px 14px;
+        transform: translateY(10px);
+        transition: transform 0.35s;
+      }
+      .gallery-item:hover .gallery-tag {
+        transform: translateY(0);
+      }
+
+      /* ════════════════════════════════
+   TESTIMONIALS
+════════════════════════════════ */
+      #testimonials {
+        background: var(--black);
+        padding: 120px 0;
+      }
+      .testi-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+      .testi-header .section-title {
+        color: var(--cream);
+      }
+      .testi-header .eyebrow {
+        color: var(--gold);
+      }
+      .testi-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+      }
+      .testi-card {
+        background: var(--black-soft);
+        padding: 48px 40px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition:
+          background 0.35s,
+          border-color 0.35s;
+        position: relative;
+      }
+      .testi-card:hover {
+        background: #222;
+        border-color: var(--border-gold);
+      }
+      .testi-quote {
+        font-family: "Bodoni Moda", serif;
+        font-size: 64px;
+        line-height: 0.5;
+        color: var(--gold);
+        opacity: 0.35;
+        margin-bottom: 16px;
+        display: block;
+      }
+      .testi-stars {
+        color: var(--gold);
+        font-size: 12px;
+        letter-spacing: 3px;
+        margin-bottom: 20px;
+      }
+      .testi-text {
+        font-family: "Bodoni Moda", serif;
+        font-size: 17px;
+        font-style: italic;
+        color: rgba(248, 243, 236, 0.7);
+        line-height: 1.85;
+        margin-bottom: 32px;
+        font-weight: 400;
+      }
+      .testi-author {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .testi-av {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+        border: 1px solid var(--border-gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        flex-shrink: 0;
+        background-color: var(--charcoal);
+      }
+      .testi-name {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--cream);
+      }
+      .testi-role {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--grey-light);
+        margin-top: 2px;
+      }
+
+      /* ════════════════════════════════
+   NEWSLETTER
+════════════════════════════════ */
+      #newsletter {
+        background: var(--cream-deep);
+      }
+      .newsletter-inner {
+        max-width: 640px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .newsletter-inner .section-title {
+        margin-bottom: 16px;
+      }
+      .newsletter-inner p {
+        font-size: 15px;
+        color: var(--grey);
+        font-weight: 300;
+        line-height: 1.85;
+        margin-bottom: 40px;
+      }
+      .newsletter-form {
+        display: flex;
+        gap: 0;
+        border: 1.5px solid var(--black);
+        overflow: hidden;
+        max-width: 500px;
+        margin: 0 auto 16px;
+      }
+      .newsletter-form input {
+        flex: 1;
+        padding: 16px 22px;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-family: "Mulish", sans-serif;
+        font-size: 13px;
+        color: var(--black);
+        font-weight: 400;
+      }
+      .newsletter-form input::placeholder {
+        color: var(--grey-light);
+      }
+      .newsletter-form button {
+        background: var(--black);
+        color: var(--white);
+        border: none;
+        padding: 16px 28px;
+        font-size: 9px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.3s;
+        white-space: nowrap;
+      }
+      .newsletter-form button:hover {
+        background: var(--gold);
+      }
+      .newsletter-note {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--grey-light);
+      }
+      .newsletter-icons {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        margin-top: 48px;
+      }
+      .nl-icon {
+        width: 52px;
+        height: 52px;
+        border: 1.5px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        cursor: pointer;
+        transition:
+          border-color 0.25s,
+          transform 0.25s,
+          background 0.25s;
+      }
+      .nl-icon:hover {
+        border-color: var(--gold);
+        background: var(--cream);
+        transform: translateY(-4px);
+      }
+
+      /* ════════════════════════════════
+   FOOTER
+════════════════════════════════ */
+      footer {
+        background: var(--black);
+        color: var(--cream);
+        padding: 80px 0 36px;
+      }
+      .footer-top {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 50px;
+        margin-bottom: 60px;
+        padding-bottom: 60px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .footer-brand {
+        font-family: "Bodoni Moda", serif;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        color: var(--cream);
+        margin-bottom: 16px;
+      }
+      .footer-brand span {
+        color: var(--gold);
+      }
+      .footer-tagline {
+        font-size: 13px;
+        color: rgba(248, 243, 236, 0.45);
+        font-weight: 300;
+        line-height: 1.8;
+        max-width: 260px;
+        margin-bottom: 28px;
+      }
+      .footer-social {
+        display: flex;
+        gap: 12px;
+      }
+      .fsoc {
+        width: 38px;
+        height: 38px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        cursor: pointer;
+        transition:
+          border-color 0.25s,
+          background 0.25s,
+          transform 0.25s;
+      }
+      .fsoc:hover {
+        border-color: var(--gold);
+        background: rgba(184, 148, 63, 0.1);
+        transform: translateY(-3px);
+      }
+      .footer-col h4 {
+        font-size: 9px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 700;
+        margin-bottom: 22px;
+      }
+      .footer-col ul {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .footer-col ul li a {
+        font-size: 13px;
+        color: rgba(248, 243, 236, 0.5);
+        transition: color 0.25s;
+        font-weight: 300;
+      }
+      .footer-col ul li a:hover {
+        color: var(--cream);
+      }
+      .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .footer-copy {
+        font-size: 11px;
+        color: rgba(248, 243, 236, 0.3);
+      }
+      .footer-copy span {
+        color: var(--gold);
+      }
+      .footer-legal {
+        display: flex;
+        gap: 24px;
+      }
+      .footer-legal a {
+        font-size: 11px;
+        color: rgba(248, 243, 236, 0.3);
+        transition: color 0.25s;
+      }
+      .footer-legal a:hover {
+        color: var(--cream);
+      }
+
+      /* Toast */
+      .toast {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: var(--black);
+        color: var(--cream);
+        border: 1px solid var(--gold);
+        padding: 15px 28px;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 600;
+        opacity: 0;
+        transition: all 0.4s;
+        z-index: 9000;
+        white-space: nowrap;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* ════════════════════════════════
+   RESPONSIVE
+════════════════════════════════ */
+      @media (max-width: 1024px) {
+        .products-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .arrivals-inner {
+          gap: 50px;
+        }
+        .footer-top {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+        .cursor-dot,
+        .cursor-ring {
+          display: none;
+        }
+        .collection-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        .arrivals-inner {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .story-grid {
+          grid-template-columns: 1fr;
+        }
+        .story-image {
+          min-height: 380px;
+          position: relative;
+        }
+        .story-img-inner {
+          position: absolute;
+          inset: 0;
+        }
+        .story-content {
+          padding: 50px 36px;
+        }
+        .gallery-masonry {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .gallery-item:nth-child(1) {
+          grid-row: span 1;
+        }
+        .gallery-item:nth-child(5) {
+          grid-column: span 1;
+        }
+        .testi-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-top {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 580px) {
+        .container {
+          padding: 0 22px;
+        }
+        .container-sm {
+          padding: 0 22px;
+        }
+        .section {
+          padding: 80px 0;
+        }
+        .products-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+        }
+        .hero-btns {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .story-stats {
+          gap: 24px;
+          flex-wrap: wrap;
+        }
+        .gallery-masonry {
+          grid-template-columns: 1fr 1fr;
+        }
+        .footer-top {
+          grid-template-columns: 1fr;
+        }
+        .newsletter-form {
+          flex-direction: column;
+          border: none;
+          gap: 0;
+        }
+        .newsletter-form input {
+          border: 1.5px solid var(--black);
+          padding: 15px 20px;
+        }
+        .newsletter-form button {
+          padding: 15px;
+          border: 1.5px solid var(--black);
+          margin-top: -1px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Custom cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Announcement -->
+    <div class="announcement">
+      Free worldwide shipping on orders over $250 · New SS25 Collection Now Live
+    </div>
+
+    <!-- ── NAV ── -->
+    <nav id="navbar">
+      <div class="container nav-inner">
+        <div class="nav-logo">Bella<span>Vogue</span></div>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#arrivals">New Arrivals</a></li>
+          <li><a href="#story">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#newsletter">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+          <button class="nav-icon" title="Search">🔍</button>
+          <button class="nav-icon" id="cartBtn" title="Bag">
+            🛍
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+          <button class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="mob-close" id="mobClose">✕</button>
+      <a href="#hero">Home</a>
+      <a href="#collection">Collection</a>
+      <a href="#arrivals">New Arrivals</a>
+      <a href="#story">Our Story</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#newsletter">Contact</a>
+    </div>
+
+    <!-- ── HERO ── -->
+    <section id="hero">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-eyebrow">SS25 Collection</div>
+          <h1 class="hero-title">
+            Elegance
+            <em>in Every</em>
+            Thread
+          </h1>
+          <p class="hero-sub">
+            Discover timeless fashion crafted for the modern woman. Where
+            couture meets confidence, and every detail is a statement of grace.
+          </p>
+          <div class="hero-btns">
+            <a href="#collection" class="btn-black">Shop Collection</a>
+            <a href="#story" class="btn-outline-black">Our Story</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll-hint">
+        <div class="scroll-mouse"></div>
+        Scroll
+      </div>
+    </section>
+
+    <!-- Trigger hero animation -->
+    <script>
+      setTimeout(
+        () => document.getElementById("hero").classList.add("loaded"),
+        100,
+      );
+    </script>
+
+    <!-- ── MARQUEE ── -->
+    <div class="marquee-strip">
+      <div class="marquee-track" id="marqueeTrack">
+        <span class="marquee-item"
+          >New Arrivals <span class="marquee-dot">✦</span></span
+        >
+        <span class="marquee-item"
+          >Free Returns <span class="marquee-dot">✦</span></span
+        >
+        <span class="marquee-item"
+          >Sustainably Made <span class="marquee-dot">✦</span></span
+        >
+        <span class="marquee-item"
+          >SS25 Collection <span class="marquee-dot">✦</span></span
+        >
+        <span class="marquee-item"
+          >Luxury Fabrics <span class="marquee-dot">✦</span></span
+        >
+        <span class="marquee-item"
+          >Limited Edition <span class="marquee-dot">✦</span></span
+        >
+        <span class="marquee-item"
+          >Worldwide Shipping <span class="marquee-dot">✦</span></span
+        >
+        <span class="marquee-item"
+          >New Arrivals <span class="marquee-dot">✦</span></span
+        >
+        <span class="marquee-item"
+          >Free Returns <span class="marquee-dot">✦</span></span
+        >
+        <span class="marquee-item"
+          >Sustainably Made <span class="marquee-dot">✦</span></span
+        >
+        <span class="marquee-item"
+          >SS25 Collection <span class="marquee-dot">✦</span></span
+        >
+        <span class="marquee-item"
+          >Luxury Fabrics <span class="marquee-dot">✦</span></span
+        >
+        <span class="marquee-item"
+          >Limited Edition <span class="marquee-dot">✦</span></span
+        >
+        <span class="marquee-item"
+          >Worldwide Shipping <span class="marquee-dot">✦</span></span
+        >
+      </div>
+    </div>
+
+    <!-- ── FEATURED COLLECTION ── -->
+    <section id="collection" class="section">
+      <div class="container">
+        <div class="collection-header reveal">
+          <div>
+            <span class="eyebrow">Featured Collection</span>
+            <h2 class="section-title">Curated for <em>You</em></h2>
+          </div>
+          <a href="#" class="view-all">View All Pieces</a>
+        </div>
+        <div class="products-grid">
+          <div class="product-card reveal delay-1">
+            <div class="product-img-wrap">
+              <div
+                class="product-img"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600&q=80&quot;);
+                "
+              ></div>
+              <div class="product-overlay">
+                <button class="btn-view" onclick="addToCart()">
+                  View Product
+                </button>
+              </div>
+              <div class="prod-badge gold">New</div>
+            </div>
+            <div class="product-category">Outerwear</div>
+            <div class="product-name">The Camel Coat</div>
+            <div class="product-price">$495</div>
+          </div>
+          <div class="product-card reveal delay-2">
+            <div class="product-img-wrap">
+              <div
+                class="product-img"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80&quot;);
+                "
+              ></div>
+              <div class="product-overlay">
+                <button class="btn-view" onclick="addToCart()">
+                  View Product
+                </button>
+              </div>
+            </div>
+            <div class="product-category">Ready to Wear</div>
+            <div class="product-name">Ivory Silk Slip</div>
+            <div class="product-price">$285</div>
+          </div>
+          <div class="product-card reveal delay-3">
+            <div class="product-img-wrap">
+              <div
+                class="product-img"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=600&q=80&quot;);
+                "
+              ></div>
+              <div class="product-overlay">
+                <button class="btn-view" onclick="addToCart()">
+                  View Product
+                </button>
+              </div>
+              <div class="prod-badge">Best Seller</div>
+            </div>
+            <div class="product-category">Dresses</div>
+            <div class="product-name">Noir Evening Gown</div>
+            <div class="product-price">
+              <span class="old">$680</span><span class="new">$520</span>
+            </div>
+          </div>
+          <div class="product-card reveal delay-4">
+            <div class="product-img-wrap">
+              <div
+                class="product-img"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1544441893-675973e31985?w=600&q=80&quot;);
+                "
+              ></div>
+              <div class="product-overlay">
+                <button class="btn-view" onclick="addToCart()">
+                  View Product
+                </button>
+              </div>
+              <div class="prod-badge gold">Exclusive</div>
+            </div>
+            <div class="product-category">Accessories</div>
+            <div class="product-name">The Gold Chain Bag</div>
+            <div class="product-price">$360</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── NEW ARRIVALS ── -->
+    <section id="arrivals">
+      <div class="container">
+        <div class="arrivals-inner">
+          <div class="arrivals-images reveal-left">
+            <div class="arrival-img">
+              <div
+                class="arrival-img-inner"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&q=80&quot;);
+                "
+              ></div>
+            </div>
+            <div class="arrival-img">
+              <div
+                class="arrival-img-inner"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80&quot;);
+                "
+              ></div>
+            </div>
+            <div class="arrival-img">
+              <div
+                class="arrival-img-inner"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=600&q=80&quot;);
+                "
+              ></div>
+            </div>
+          </div>
+          <div class="arrivals-text reveal-right">
+            <span class="eyebrow">New Arrivals</span>
+            <h2 class="section-title">Fresh from the <em>Atelier</em></h2>
+            <div class="gold-line"></div>
+            <p>
+              Each new piece arrives carrying the weight of countless hours of
+              design, refinement, and a relentless pursuit of perfection. These
+              are not just clothes — they are wearable artworks, made to last a
+              lifetime.
+            </p>
+
+            <div class="new-item-row">
+              <div
+                class="new-item-img"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=200&q=70&quot;);
+                "
+              ></div>
+              <div class="new-item-info">
+                <div class="new-item-name">Belted Trench Coat</div>
+                <div class="new-item-price">$420</div>
+              </div>
+              <button class="btn-cart" onclick="addToCart()">Add to Bag</button>
+            </div>
+            <div class="new-item-row">
+              <div
+                class="new-item-img"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200&q=70&quot;);
+                "
+              ></div>
+              <div class="new-item-info">
+                <div class="new-item-name">Pleated Midi Skirt</div>
+                <div class="new-item-price">$195</div>
+              </div>
+              <button class="btn-cart" onclick="addToCart()">Add to Bag</button>
+            </div>
+            <div class="new-item-row">
+              <div
+                class="new-item-img"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=200&q=70&quot;);
+                "
+              ></div>
+              <div class="new-item-info">
+                <div class="new-item-name">Cashmere Knit Set</div>
+                <div class="new-item-price">$340</div>
+              </div>
+              <button class="btn-cart" onclick="addToCart()">Add to Bag</button>
+            </div>
+
+            <br />
+            <a
+              href="#"
+              class="btn-black"
+              style="display: inline-block; margin-top: 10px"
+              >Shop All New Arrivals</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BRAND STORY ── -->
+    <section id="story">
+      <div class="story-grid">
+        <div class="story-image" id="storyImg">
+          <div class="story-img-inner" id="storyParallax"></div>
+        </div>
+        <div class="story-content reveal-right">
+          <span class="eyebrow">Our Story</span>
+          <h2 class="section-title">Born from a<br />Love of <em>Craft</em></h2>
+          <div class="gold-line"></div>
+          <p>
+            Bella Vogue was founded in 2010 by creative director Isabella
+            Fontaine — a woman who believed that fashion should feel as
+            extraordinary as it looks. From a small atelier in Milan, the brand
+            has grown into a global symbol of understated luxury.
+          </p>
+          <p>
+            Every Bella Vogue garment begins with the finest raw materials: silk
+            woven in Como, cashmere sourced from Mongolia, and wool selected
+            from the finest merino flocks in New Zealand. These are then shaped
+            by the hands of master craftspeople who have spent decades
+            perfecting their art.
+          </p>
+          <div class="story-stats">
+            <div class="story-stat">
+              <div class="num">15+</div>
+              <div class="lbl">Years of Design</div>
+            </div>
+            <div class="story-stat">
+              <div class="num">80</div>
+              <div class="lbl">Countries Worldwide</div>
+            </div>
+            <div class="story-stat">
+              <div class="num">4</div>
+              <div class="lbl">CFDA Awards</div>
+            </div>
+          </div>
+          <div class="story-sig">Isabella Fontaine</div>
+          <p
+            style="
+              font-size: 11px;
+              letter-spacing: 0.1em;
+              text-transform: uppercase;
+              color: var(--grey-light);
+              margin-top: 4px;
+            "
+          >
+            Founder & Creative Director
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── GALLERY ── -->
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="gallery-header reveal">
+          <span class="eyebrow">The Look Book</span>
+          <h2 class="section-title">Style <em>Gallery</em></h2>
+          <div class="gold-line center"></div>
+        </div>
+        <div class="gallery-masonry">
+          <div class="gallery-item reveal">
+            <div
+              class="gallery-img-inner"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80&quot;);
+              "
+            ></div>
+            <div class="gallery-hover">
+              <div class="gallery-tag">SS25 Campaign</div>
+            </div>
+          </div>
+          <div class="gallery-item reveal delay-1">
+            <div
+              class="gallery-img-inner"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80&quot;);
+              "
+            ></div>
+            <div class="gallery-hover">
+              <div class="gallery-tag">The Edit</div>
+            </div>
+          </div>
+          <div class="gallery-item reveal delay-2">
+            <div
+              class="gallery-img-inner"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80&quot;);
+              "
+            ></div>
+            <div class="gallery-hover">
+              <div class="gallery-tag">New Arrivals</div>
+            </div>
+          </div>
+          <div class="gallery-item reveal delay-1">
+            <div
+              class="gallery-img-inner"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80&quot;);
+              "
+            ></div>
+            <div class="gallery-hover">
+              <div class="gallery-tag">Resort 25</div>
+            </div>
+          </div>
+          <div class="gallery-item reveal delay-2">
+            <div
+              class="gallery-img-inner"
+              style="
+                background-image: url(&quot;https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=80&quot;);
+              "
+            ></div>
+            <div class="gallery-hover">
+              <div class="gallery-tag">Campaign</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ── -->
+    <section id="testimonials">
+      <div class="container">
+        <div class="testi-header reveal">
+          <span class="eyebrow">Client Voices</span>
+          <h2 class="section-title">Worn with <em>Confidence</em></h2>
+          <div class="gold-line center"></div>
+        </div>
+        <div class="testi-grid">
+          <div class="testi-card reveal delay-1">
+            <span class="testi-quote">"</span>
+            <div class="testi-stars">★ ★ ★ ★ ★</div>
+            <p class="testi-text">
+              I wore The Noir Gown to the Met Gala preview and received more
+              compliments than I ever have. The cut, the drape, the quality of
+              the fabric — it's genuinely unlike anything else at this price
+              point.
+            </p>
+            <div class="testi-author">
+              <div class="testi-av">👩‍🦳</div>
+              <div>
+                <div class="testi-name">Margot Delacroix</div>
+                <div class="testi-role">Stylist · Paris</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card reveal delay-2">
+            <span class="testi-quote">"</span>
+            <div class="testi-stars">★ ★ ★ ★ ★</div>
+            <p class="testi-text">
+              Bella Vogue is the only brand I trust for special occasions. Every
+              detail, from the hand-stitched seams to the silk lining, speaks of
+              craftsmanship you can genuinely feel when you wear it.
+            </p>
+            <div class="testi-author">
+              <div class="testi-av">👩‍🦱</div>
+              <div>
+                <div class="testi-name">Chiara Benedetti</div>
+                <div class="testi-role">Fashion Editor · Milan</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card reveal delay-3">
+            <span class="testi-quote">"</span>
+            <div class="testi-stars">★ ★ ★ ★ ★</div>
+            <p class="testi-text">
+              The Camel Coat is the single best investment I've made in my
+              wardrobe. Three years later, it looks as immaculate as the day I
+              unboxed it. True luxury is timeless, and Bella Vogue understands
+              that.
+            </p>
+            <div class="testi-author">
+              <div class="testi-av">🧕</div>
+              <div>
+                <div class="testi-name">Aisha Noor</div>
+                <div class="testi-role">Creative Director · Dubai</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── NEWSLETTER ── -->
+    <section id="newsletter" class="section">
+      <div class="container">
+        <div class="newsletter-inner reveal">
+          <span class="eyebrow">Stay Connected</span>
+          <h2 class="section-title">Join the <em>Inner Circle</em></h2>
+          <div class="gold-line center"></div>
+          <p>
+            Be the first to discover new collections, exclusive events, and
+            private sale access. As a subscriber, you'll receive 10% off your
+            first order and early access to every new drop.
+          </p>
+          <form class="newsletter-form" id="nlForm">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit">Subscribe</button>
+          </form>
+          <p class="newsletter-note">
+            ✦ No spam, ever · Unsubscribe at any time
+          </p>
+          <div class="newsletter-icons">
+            <div class="nl-icon" title="Instagram">📸</div>
+            <div class="nl-icon" title="Pinterest">📌</div>
+            <div class="nl-icon" title="TikTok">🎵</div>
+            <div class="nl-icon" title="Facebook">👤</div>
+            <div class="nl-icon" title="Twitter">🐦</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+      <div class="container">
+        <div class="footer-top">
+          <div>
+            <div class="footer-brand">Bella<span>Vogue</span></div>
+            <p class="footer-tagline">
+              Elevating everyday dressing through the timeless art of
+              considered, conscious fashion.
+            </p>
+            <div class="footer-social">
+              <div class="fsoc">📸</div>
+              <div class="fsoc">📌</div>
+              <div class="fsoc">🎵</div>
+              <div class="fsoc">👤</div>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Shop</h4>
+            <ul>
+              <li><a href="#">New Arrivals</a></li>
+              <li><a href="#">The Collection</a></li>
+              <li><a href="#">Dresses</a></li>
+              <li><a href="#">Outerwear</a></li>
+              <li><a href="#">Accessories</a></li>
+              <li><a href="#">Sale</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Sizing Guide</a></li>
+              <li><a href="#">Shipping & Returns</a></li>
+              <li><a href="#">Care Instructions</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Brand</h4>
+            <ul>
+              <li><a href="#">Our Story</a></li>
+              <li><a href="#">Sustainability</a></li>
+              <li><a href="#">Press & Media</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Store Locator</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-copy">
+            © 2025 Bella<span>Vogue</span>. All rights reserved.
+          </div>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Settings</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">✦ Added to your bag</div>
+
+    <!-- ════════════════════════════════
+   JAVASCRIPT
+════════════════════════════════ -->
+    <script>
+      /* ── Custom cursor ── */
+      const dot = document.getElementById("cursorDot");
+      const ring = document.getElementById("cursorRing");
+      let mx = 0,
+        my = 0,
+        rx = 0,
+        ry = 0;
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        dot.style.left = mx + "px";
+        dot.style.top = my + "px";
+      });
+      (function animCursor() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + "px";
+        ring.style.top = ry + "px";
+        requestAnimationFrame(animCursor);
+      })();
+      document
+        .querySelectorAll("a, button, .product-card, .gallery-item")
+        .forEach((el) => {
+          el.addEventListener("mouseenter", () => {
+            ring.style.width = "56px";
+            ring.style.height = "56px";
+            ring.style.opacity = "0.4";
+            dot.style.transform = "translate(-50%,-50%) scale(1.8)";
+          });
+          el.addEventListener("mouseleave", () => {
+            ring.style.width = "36px";
+            ring.style.height = "36px";
+            ring.style.opacity = "0.6";
+            dot.style.transform = "translate(-50%,-50%) scale(1)";
+          });
+        });
+
+      /* ── Nav scroll ── */
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 50);
+      });
+
+      /* ── Mobile menu ── */
+      document.getElementById("hamburger").addEventListener("click", () => {
+        document.getElementById("mobileMenu").classList.add("open");
+      });
+      document.getElementById("mobClose").addEventListener("click", () => {
+        document.getElementById("mobileMenu").classList.remove("open");
+      });
+      document.querySelectorAll(".mobile-menu a").forEach((a) => {
+        a.addEventListener("click", () =>
+          document.getElementById("mobileMenu").classList.remove("open"),
+        );
+      });
+
+      /* ── Scroll reveal ── */
+      const revealEls = document.querySelectorAll(
+        ".reveal, .reveal-left, .reveal-right",
+      );
+      const revealObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+              const delay =
+                parseFloat(getComputedStyle(entry.target).transitionDelay) || 0;
+              setTimeout(() => entry.target.classList.add("visible"), i * 70);
+              revealObs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      revealEls.forEach((el) => revealObs.observe(el));
+
+      /* ── Parallax story image ── */
+      const storyParallax = document.getElementById("storyParallax");
+      window.addEventListener("scroll", () => {
+        if (!storyParallax) return;
+        const rect = document
+          .getElementById("storyImg")
+          .getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          const progress =
+            (window.innerHeight - rect.top) /
+            (window.innerHeight + rect.height);
+          storyParallax.style.transform = `translateY(${(progress - 0.5) * 60}px)`;
+        }
+      });
+
+      /* ── Cart ── */
+      let cartItems = 0;
+      function addToCart() {
+        cartItems++;
+        document.getElementById("cartCount").textContent = cartItems;
+        const toast = document.getElementById("toast");
+        toast.classList.add("show");
+        clearTimeout(window._toastTimer);
+        window._toastTimer = setTimeout(
+          () => toast.classList.remove("show"),
+          2800,
+        );
+      }
+
+      /* ── Newsletter form ── */
+      document.getElementById("nlForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const toast = document.getElementById("toast");
+        toast.textContent = "✦ Welcome to the Inner Circle";
+        toast.classList.add("show");
+        e.target.reset();
+        setTimeout(() => {
+          toast.classList.remove("show");
+          setTimeout(() => (toast.textContent = "✦ Added to your bag"), 500);
+        }, 3000);
+      });
+    </script>
+  </body>
+</html>
